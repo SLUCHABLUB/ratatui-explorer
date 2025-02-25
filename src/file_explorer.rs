@@ -1,6 +1,6 @@
 use std::{io::Result, path::PathBuf};
 
-use ratatui::widgets::WidgetRef;
+use ratatui::widgets::Widget;
 
 use crate::{input::Input, widget::Renderer, Theme};
 
@@ -128,14 +128,14 @@ impl FileExplorer {
     /// loop {
     ///     terminal.draw(|f| {
     ///         let widget = file_explorer.widget(); // Get the widget to render the file explorer
-    ///         f.render_widget(&widget, f.area());
+    ///         f.render_widget(widget, f.area());
     ///     }).unwrap();
     ///
     ///     // ...
     /// }
     /// ```
     #[inline]
-    pub const fn widget(&self) -> impl WidgetRef + '_ {
+    pub const fn widget(&self) -> impl Widget + '_ {
         Renderer(self)
     }
 
